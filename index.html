@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nadila Elsa Safira · pink modern portfolio</title>
+  <!-- Font & Icons (clean) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fbc7e6, #fbb0d4, #fcb1c6, #ffc1cc);
+      background-size: 400% 400%;
+      animation: gradientFlow 14s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* floating particles yang super subtle */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.08"><circle cx="30" cy="30" r="6" fill="white"/><circle cx="150" cy="80" r="8" fill="white"/><circle cx="80" cy="170" r="5" fill="white"/></svg>');
+      pointer-events: none;
+      animation: floatParticles 40s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatParticles {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-60px) translateX(30px); }
+    }
+
+    /* semua konten di atas layer */
+    header, section, .contact-section {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* HEADER clean */
+    header {
+      text-align: center;
+      padding: 70px 20px 40px;
+      color: white;
+      animation: fadeInDown 1.2s ease;
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 15px 35px rgba(245, 120, 200, 0.4);
+      margin-bottom: 20px;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05) rotate(1.5deg);
+      box-shadow: 0 25px 40px #ff9bd2;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-shadow: 2px 2px 12px rgba(240, 120, 180, 0.3);
+      animation: softGlow 3s infinite alternate;
+      letter-spacing: -0.5px;
+    }
+
+    @keyframes softGlow {
+      0% { text-shadow: 0 0 5px #fff0fa, 0 0 10px #ffd5ea; }
+      100% { text-shadow: 0 0 15px #ffe6f3, 0 0 25px #ffb8da; }
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      margin-top: 5px;
+    }
+
+    /* SECTION CARD dengan glassmorphism + animasi naik-turun halus */
+    section {
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 0 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,240,0.7);
+      padding: 30px;
+      border-radius: 40px;
+      box-shadow: 0 25px 45px -12px #f5a6c7;
+      margin-bottom: 35px;
+      transition: all 0.35s ease;
+      text-align: center;
+      animation: cardFloat 5s infinite alternate ease-in-out;
+    }
+
+    @keyframes cardFloat {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .card:hover {
+      transform: scale(1.01) translateY(-12px);
+      background: white;
+      box-shadow: 0 35px 55px -8px #f58bbd;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #ce579b;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: inline-block;
+      border-bottom: 4px dotted #ffb8df;
+      padding-bottom: 5px;
+    }
+
+    h2 i {
+      margin-right: 8px;
+      color: #f28fc0;
+    }
+
+    .projectLink {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #f075b0;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 60px;
+      transition: 0.3s;
+      font-weight: 600;
+      box-shadow: 0 12px 20px #fdb0d5;
+      border: 2px solid transparent;
+      animation: pulseBtn 2.5s infinite;
+    }
+
+    @keyframes pulseBtn {
+      0% { box-shadow: 0 0 0 0 #ffb8da; }
+      70% { box-shadow: 0 0 0 12px rgba(255, 175, 222, 0.2); }
+      100% { box-shadow: 0 0 0 0 #ffb8da; }
+    }
+
+    .projectLink:hover {
+      background: #ff87bb;
+      transform: scale(1.06);
+      border-color: white;
+    }
+
+    /* CONTACT dengan glassmorphism lebih kuat */
+    .contact-section {
+      padding: 50px 20px 70px;
+      text-align: center;
+      color: white;
+    }
+
+    .contact-section h2 {
+      color: white;
+      border-bottom: 4px dotted white;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .contact-card {
+      text-decoration: none;
+      color: white;
+      padding: 25px 30px;
+      border-radius: 35px;
+      width: 280px;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+      box-shadow: 0 20px 35px rgba(180, 60, 140, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 150px;
+      backdrop-filter: blur(4px);
+      border: 2px solid rgba(255,255,255,0.5);
+      animation: cardWobble 6s infinite alternate;
+    }
+
+    .contact-card:nth-child(1) {
+      background: linear-gradient(135deg, #f35ba8, #f284c2);
+    }
+    .contact-card:nth-child(2) {
+      background: linear-gradient(135deg, #fc72b5, #faa3d0);
+    }
+
+    @keyframes cardWobble {
+      0% { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(0.4deg) scale(1.01); }
+    }
+
+    .contact-card:hover {
+      transform: translateY(-18px) scale(1.03);
+      box-shadow: 0 40px 55px #e65e9e;
+      border-color: white;
+    }
+
+    .contact-card i {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2));
+    }
+
+    .contact-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .contact-card p {
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.2);
+      padding: 6px 15px;
+      border-radius: 50px;
+    }
+
+    /* preview karya dengan tag */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin: 25px 0 5px;
+    }
+    .skill-tags span {
+      background: #fdb0d5;
+      padding: 10px 18px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 500;
+      box-shadow: 0 5px 10px #fbb0cb;
+      transition: 0.2s;
+    }
+    .skill-tags span:hover {
+      transform: scale(1.05);
+      background: #f282bc;
+    }
+
+    /* social media mini */
+    .social-mini {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 15px 0;
+    }
+    .social-mini a {
+      color: #d44c94;
+      transition: 0.2s;
+    }
+    .social-mini a:hover {
+      transform: translateY(-5px);
+      color: #b81b70;
+    }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .contact-card { width: 100%; max-width: 300px; }
+    }
+
+    /* fade up animation untuk semua section */
+    section, .contact-section {
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* scroll cantik */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ffe3f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f598c2;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #f26bac;
+    }
+
+    /* teks about lebih nyaman dibaca */
+    .card p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #3f2d38;
+    }
+
+    /* tidak ada bintang muter — semuanya clean */
+    .clean-icon {
+      color: #ffacc9;
+      margin: 0 3px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER dengan foto statis pp.png (tanpa upload) -->
+<header>
+  <!-- gambar profil menggunakan file pp.png di folder yang sama -->
+  <img id="profilePreview" class="profile-img" src="elsa.jpeg" alt="Nadila Elsa" onerror="this.src='https://via.placeholder.com/160/ffc0cb/000000?text=🌸'">
+  <h1>✦ Halo, Saya Nadila Elsa Safira ✦</h1>
+  <p>
+    <i class="fas fa-heart clean-icon"></i> 
+    Developer | Creative Designer 
+    <i class="fas fa-heart clean-icon"></i>
+  </p>
+  <!-- tombol upload dihapus sesuai permintaan, hanya pakai pp.png -->
+</header>
+
+<!-- ABOUT SECTION -->
+<section>
+  <h2><i class="fas fa-smile-wink"></i> About Me</h2>
+  <div class="card">
+    <p>
+      <i class="fas fa-sparkles" style="color:#f598c2;"></i> 
+      Hai! aku Nadila Elsa Safira, biasa dipanggil Elsa ✨🌙. 
+      Siswi kelas 11 jurusan Pengembangan Perangkat Lunak dan Gim di SMKN 2 Nganjuk. 
+      Keseharianku belajar tentang pembuatan game, desain grafis, dan eksperimen UI/UX. 
+      💗 Aplikasi yang biasa aku pakai: <strong>CorelDraw, Adobe Illustrator, Blender, Construct 3,</strong> dan mulai merambah Unity.
+      Di bawah ini adalah beberapa karya 2D, 3D, web, dan game sederhana.
+    </p>
+  </div>
+</section>
+
+<!-- PROJECT SECTION (folder drive) -->
+<section>
+  <h2><i class="fas fa-folder-open"></i> My Projects</h2>
+  <div class="card">
+    <h3>📁 Satu Folder Semua Karya</h3>
+    <p>
+      Semua project desain, game, dan web sudah aku kumpulkan dalam folder Google Drive. 
+      Klik tombol di bawah untuk lihat portofolio lengkap ✨
+    </p>
+    <a href="https://drive.google.com/drive/folders/1VuuHx7DDEFi1Kymdf5aidtnu4BtikqNK?usp=sharing" 
+       target="_blank" class="projectLink">
+       <i class="fas fa-external-link-alt" style="margin-right:8px;"></i> Lihat Semua Project
+    </a>
+  </div>
+</section>
+
+<!-- EXTRA GALLERY kesan interaktif (tanpa bintang muter) -->
+<section>
+  <div class="card" style="background: rgba(255,235,245,0.7);">
+    <h3><i class="fas fa-images"></i> preview karya pilihan</h3>
+    <div class="skill-tags">
+      <span>🌸 desain 2D</span>
+      <span>🧊 Blender 3D</span>
+      <span>🎮 Construct 3</span>
+      <span>🌐 web portfolio</span>
+    </div>
+    <p style="font-size:0.95rem; font-style:italic; margin-top:20px;">✨ dan masih banyak lagi di drive ✨</p>
+  </div>
+</section>
+
+<!-- CONTACT ME (dua kartu) -->
+<section class="contact-section">
+  <h2><i class="fas fa-paper-plane"></i> Contact Me</h2>
+  <p style="font-size:1.2rem; margin-bottom:10px;">💬 yuk ngobrol atau collaborate 👇</p>
+
+  <div class="contact-links">
+    <!-- whatsapp -->
+    <a href="https://wa.me/628978114531" target="_blank" class="contact-card">
+      <i class="fab fa-whatsapp"></i>
+      <h3>WhatsApp</h3>
+      <p>+62 897-8114-531</p>
+    </a>
+    <!-- email -->
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nadilaelsasafira@gmail.com" target="_blank" class="contact-card">
+      <i class="far fa-envelope"></i>
+      <h3>Email</h3>
+      <p>nadilaelsasafira<br>@gmail.com</p>
+    </a>
+  </div>
+</section>
+
+<!-- Social media mini (clean, tanpa bintang) -->
+<section style="margin-top:-10px; padding-bottom:50px;">
+  <div class="card" style="background:#fff0f7;">
+    <h3><i class="fas fa-globe"></i> sosial media aku</h3>
+    <div class="social-mini">
+      <a href="https://www.instagram.com/n.elsasfra?igsh=ejA5a3YwaGg0MzBt" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/nadilaelsasafira-source" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.tiktok.com/@aielsaaa?_r=1&_t=ZS-949geJff80D" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p style="font-size:0.9rem;">✨ @nadilaelssa ✨</p>
+  </div>
+</section>
+<script>
+</script>
+</body>
+</html>
